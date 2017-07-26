@@ -1,4 +1,4 @@
-package com.boomarang.cbstop.event;
+package com.boomarang.cbstop.Fragment;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.boomarang.cbstop.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BedFragment extends Fragment {
+public class CampingFragment extends Fragment {
 
 
-    public BedFragment() {
+    public CampingFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class BedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bed, container, false);
+        return inflater.inflate(R.layout.fragment_camping, container, false);
     }
 
 }

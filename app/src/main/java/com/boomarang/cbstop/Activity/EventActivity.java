@@ -10,12 +10,12 @@ import android.os.Bundle;
 
 import com.boomarang.cbstop.Constants.Resource;
 import com.boomarang.cbstop.R;
-import com.boomarang.cbstop.event.BedFragment;
-import com.boomarang.cbstop.event.CampingFragment;
-import com.boomarang.cbstop.event.EventFragment;
-import com.boomarang.cbstop.event.FoodFragment;
-import com.boomarang.cbstop.event.HistoricFragment;
-import com.boomarang.cbstop.event.TreeFragment;
+import com.boomarang.cbstop.Fragment.BedFragment;
+import com.boomarang.cbstop.Fragment.CampingFragment;
+import com.boomarang.cbstop.Fragment.EventFragment;
+import com.boomarang.cbstop.Fragment.FoodFragment;
+import com.boomarang.cbstop.Fragment.HistoricFragment;
+import com.boomarang.cbstop.Fragment.TreeFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

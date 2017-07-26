@@ -66,9 +66,8 @@ public class SearchActivity extends AppCompatActivity {
     private void AddItemListToSpinner()
     {
         ArrayAdapter<CharSequence> adapter
-                = ArrayAdapter.createFromResource(this, R.array.category, android.R.layout.simple_spinner_dropdown_item);
+                = ArrayAdapter.createFromResource(this, R.array.category, R.layout.spinner_category_item);
         sp_search_category.setAdapter(adapter);
-
     }
 
     private void SetOnMenuItemClickListener()
@@ -110,11 +109,8 @@ public class SearchActivity extends AppCompatActivity {
 
                     for(Place element : retPlaceList)
                     {
-                        Log.d(LOG_TAG, element.toString());
-
                         int resourceId = CategoryToImageResource(element.getCategory());
                         AddPlaceView(resourceId, element);
-
                     }
                 }
                 else{
@@ -161,7 +157,10 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Place place = placeView.getmPlace();
+                Intent intent = new Intent(getApplicationContext(), SearchDetailActivity.class);
+                intent.putExtra("place", place);
 
+                startActivity(intent);
             }
         });
 

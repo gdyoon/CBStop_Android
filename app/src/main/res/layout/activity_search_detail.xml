@@ -1,9 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.boomarang.cbstop.Activity.SearchDetailActivity">
+    tools:context="com.boomarang.cbstop.Activity.SearchDetailActivity"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <fragment
+        android:id="@+id/map_search_detail"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_detail_place_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="장소명"
+                android:textColor="#000"
+                android:textSize="23dp" />
+
+            <TextView
+                android:id="@+id/tv_detail_place_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주소명"
+                android:textSize="12dp"
+                android:textColor="#555"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_detail_place_path"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/img_detail_map"
+            android:layout_marginRight="15dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#000"
+            android:background="@drawable/button_image_selector"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#bbb" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="발자취 남기기"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#bbb" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp">
+
+        <ImageView
+            android:id="@+id/iv_detail_user"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/img_main_user2"
+            android:layout_alignParentLeft="true"/>
+
+        <EditText
+            android:id="@+id/et_detail_review"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:hint="발자취를 남겨주세요"
+            android:textAlignment="center"
+            android:layout_toRightOf="@+id/iv_detail_user"/>
+
+        <Button
+            android:id="@+id/btn_detail_confirm"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:text="등록"
+            android:background="@drawable/button"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+</LinearLayout>

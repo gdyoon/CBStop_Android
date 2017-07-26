@@ -3,7 +3,9 @@ package com.boomarang.cbstop.CustomView;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Place {
+import java.io.Serializable;
+
+public class Place implements Serializable {
 
     @SerializedName("name")
     @Expose
@@ -29,6 +31,21 @@ public class Place {
     @SerializedName("longitude")
     @Expose
     private String longitude;
+
+
+    @Override
+    public String toString() {
+        return   " name : " + name
+                + " category : " + category
+                + " region : " + region
+                + " date : " + date
+                + " address : " + address
+                + " phone : " + phone
+                + " lat : " + latitude
+                + " lng : " + longitude;
+    }
+
+
 
     public String getName() {
         return name;
@@ -94,15 +111,6 @@ public class Place {
         this.longitude = longitude;
     }
 
-    @Override
-    public String toString() {
-        return   " name : " + name
-                + " cateogry : " + category
-                + " region : " + region
-                + " date : " + date
-                + " address : " + address
-                + " phone : " + phone
-                + " lat : " + latitude
-                + " lng : " + longitude;
-    }
+
+
 }

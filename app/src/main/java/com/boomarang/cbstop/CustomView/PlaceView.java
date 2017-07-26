@@ -51,4 +51,12 @@ public class PlaceView extends LinearLayout {
         mPlace.setName(mPlaceName);
         tv_item_place.setText(this.mPlace.getName());
     }
+
+    public Place getmPlace() {
+        return mPlace;
+    }
+
+    public void setmPlace(Place mPlace) {
+        this.mPlace = mPlace;
+    }
 }

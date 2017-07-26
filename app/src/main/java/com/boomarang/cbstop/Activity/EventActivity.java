@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.boomarang.cbstop.Constants.Resource;
 import com.boomarang.cbstop.R;
 import com.boomarang.cbstop.event.BedFragment;
 import com.boomarang.cbstop.event.CampingFragment;
@@ -30,14 +31,7 @@ public class EventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event);
         ButterKnife.bind(this);
 
-        int[] arrIconResource = {
-               R.drawable.img_search_historic,
-                R.drawable.img_search_camping,
-                R.drawable.img_search_tree,
-                R.drawable.img_search_fest,
-                R.drawable.img_search_food,
-                R.drawable.img_search_bed
-        };
+
 
         Fragment[] arrFragments = new Fragment[6];
         arrFragments[0] = new HistoricFragment();
@@ -53,7 +47,7 @@ public class EventActivity extends AppCompatActivity {
 
 
         for(int i=0; i<tabLayout.getTabCount(); i++) {
-            tabLayout.getTabAt(i).setIcon(arrIconResource[i]);
+            tabLayout.getTabAt(i).setIcon(Resource.ICON_CATEGORY_RESOURCE[i]);
         }
     }
 

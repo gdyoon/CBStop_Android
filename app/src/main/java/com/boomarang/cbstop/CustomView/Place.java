@@ -94,4 +94,15 @@ public class Place {
         this.longitude = longitude;
     }
 
+    @Override
+    public String toString() {
+        return   " name : " + name
+                + " cateogry : " + category
+                + " region : " + region
+                + " date : " + date
+                + " address : " + address
+                + " phone : " + phone
+                + " lat : " + latitude
+                + " lng : " + longitude;
+    }
 }

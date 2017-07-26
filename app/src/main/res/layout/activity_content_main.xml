@@ -36,15 +36,6 @@
                 android:gravity="center"
                 android:background="@null"  />
 
-            <ImageButton
-                android:id="@+id/btn_main_search"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/img_main_search"
-                android:scaleType="centerCrop"
-                android:background="@android:color/transparent"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
     </android.support.v7.widget.Toolbar>

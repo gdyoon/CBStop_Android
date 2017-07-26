@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mapFragment.getMapAsync(this);
 
         CombineNavigationWithToolbar();
-        vw_main_navigation.setNavigationItemSelectedListener(this);
+        SetOnMenuItemClickListener();
     }
 
     @Override
@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 this, layout_main_drawer, tb_main_bar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         layout_main_drawer.setDrawerListener(toggle);
         toggle.syncState();
+        vw_main_navigation.setNavigationItemSelectedListener(this);
     }
 
 
@@ -82,14 +83,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @OnClick(R.id.btn_main_search)
-    public void OnSearchButtonClicked() {
-        String searchValue = et_main_search.getText().toString();
+    private void SetOnMenuItemClickListener()
+    {
+        tb_main_bar.inflateMenu(R.menu.menu_main_search);
+        tb_main_bar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if(item.getItemId() == R.id.menu_main_search){
+                    String searchValue = et_main_search.getText().toString();
 
-        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
-        intent.putExtra("searchValue", searchValue);
-        startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                    intent.putExtra("searchValue", searchValue);
+                    startActivity(intent);
+                }
+                return false;
+            }
+        });
     }
-
 
 }

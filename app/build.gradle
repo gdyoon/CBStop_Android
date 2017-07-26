@@ -6,7 +6,7 @@ android {
         CBStop_config {
             keyAlias 'BoomerangAndroidKey'
             keyPassword 'stopman'
-            storeFile file('C:/Users/SangHun/Desktop/keystore/CBStop/android-keystore.jks')
+            storeFile file('../keystore/android-keystore.jks')
             storePassword 'yesman'
         }
     }
@@ -49,6 +49,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
 

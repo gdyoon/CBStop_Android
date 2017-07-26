@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_main_bar"
+        android:id="@+id/tb_search_bar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#26a69a"
@@ -30,9 +30,9 @@
 
             <Spinner
                 android:id="@+id/sp_search_category"
-                android:layout_width="90dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:textSize="10dp"
+                android:textSize="8dp"
                 android:textColor="#000"
                 android:textAlignment="center"
                 android:gravity="center"
@@ -47,15 +47,6 @@
                 android:gravity="center"
                 android:background="@null"  />
 
-            <ImageButton
-                android:id="@+id/btn_search_search"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/img_main_search"
-                android:scaleType="centerCrop"
-                android:background="@android:color/transparent"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"/>
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -237,6 +228,19 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#bbb" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layout_search_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+
+    </ScrollView>
 
 
 

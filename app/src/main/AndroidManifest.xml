@@ -9,21 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CoverActivity">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC_k7f-y_PND_7nt-mZKNSavZaAgrMIWJU" />
+
+        <activity android:name=".Activity.CoverActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".FindPathActivity" />
-        <activity android:name=".BadgeActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".SettingActivity" />
-        <activity android:name=".EventActivity" />
-        <activity android:name=".SearchDetailActivity"></activity>
+        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.FindPathActivity" />
+        <activity android:name=".Activity.BadgeActivity" />
+        <activity android:name=".Activity.SearchActivity" />
+        <activity android:name=".Activity.SettingActivity" />
+        <activity android:name=".Activity.EventActivity" />
+        <activity android:name=".Activity.SearchDetailActivity"></activity>
     </application>
 
 </manifest>

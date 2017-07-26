@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "423946824674",
+    "firebase_url": "https://cbstop-640de.firebaseio.com",
+    "project_id": "cbstop-640de",
+    "storage_bucket": "cbstop-640de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423946824674:android:fc4b0dd43b9fa855",
+        "android_client_info": {
+          "package_name": "com.boomarang.cbstop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423946824674-qr53ulfeaegf02ac5dsr12g6aq9ht5sh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.boomarang.cbstop",
+            "certificate_hash": "daf7001c1dff7563a3e43307da3f970819e8fdd6"
+          }
+        },
+        {
+          "client_id": "423946824674-i8je8ffmr0ahr9l060dtdngvmb297oqn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.boomarang.cbstop",
+            "certificate_hash": "a45b685bab3285eb94a4f53a38f2b3a52d06e396"
+          }
+        },
+        {
+          "client_id": "423946824674-obi8e99ljs73bf9jratg1gih1h5qidnr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9V6NT900M3RjX_ovehXLOMKMLSTcKLac"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423946824674-obi8e99ljs73bf9jratg1gih1h5qidnr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -81,16 +81,18 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 if(item.getItemId() == R.id.menu_main_search){
                     int position = sp_search_category.getSelectedItemPosition();
-                    String region = et_search_search.getText().toString();
+                    String searchedValue = et_search_search.getText().toString();
 
                     switch (position)
                     {
                         case MENU_PLACE_REGION:
-                            LoadPlaceData(region);
+                            LoadPlaceData(MENU_PLACE_REGION, searchedValue);
                             break;
                         case MENU_PLACE_NAME:
+                            LoadPlaceData(MENU_PLACE_NAME, searchedValue);
                             break;
                         case MENU_PLACE_ADDR:
+                            LoadPlaceData(MENU_PLACE_ADDR, searchedValue);
                             break;
                     }
                 }
@@ -99,17 +101,24 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    private void LoadPlaceData(String... params)
+
+    private void LoadPlaceData(int currentMenuIndex, String... params)
     {
-        if(params.length == 1)
+        if(currentMenuIndex == MENU_PLACE_REGION)
         {
-            LoadPlace(params[0]);
+            if      (params.length == 1) LoadPlace(params[0]);
+            else if (params.length == 2) LoadPlace(params[0], params[1]);
         }
-        else if(params.length == 2)
+        else if(currentMenuIndex == MENU_PLACE_NAME)
         {
-            LoadPlace(params[0], params[1]);
+            LoadPlaceName(params[0]);
+        }
+        else if(currentMenuIndex == MENU_PLACE_ADDR)
+        {
+            LoadPlaceAddress(params[0]);
         }
     }
+
 
     private void LoadPlace(String paramRegion)
     {
@@ -144,6 +153,66 @@ public class SearchActivity extends AppCompatActivity {
     private void LoadPlace(String paramRegion, String paramCategory)
     {
         mPlaceService.getPlaces(paramRegion, paramCategory).enqueue(new Callback<PlaceList>() {
+            @Override
+            public void onResponse(Call<PlaceList> call, Response<PlaceList> response) {
+
+                if(response.isSuccessful()) {
+                    layout_search_list.removeAllViews();
+
+                    List<Place> retPlaceList = response.body().getPlaces();
+
+                    for(Place element : retPlaceList)
+                    {
+                        int resourceId = CategoryToImageResource(element.getCategory());
+                        AddPlaceView(resourceId, element);
+                    }
+                }
+                else{
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<PlaceList> call, Throwable t) {
+                Log.d(LOG_TAG, "response error : " + t.getMessage());
+            }
+        });
+    }
+
+    private void LoadPlaceName(String paramName)
+    {
+        mPlaceService.getPlacesWithName(paramName).enqueue(new Callback<PlaceList>() {
+            @Override
+            public void onResponse(Call<PlaceList> call, Response<PlaceList> response) {
+
+                if(response.isSuccessful()) {
+                    layout_search_list.removeAllViews();
+
+                    List<Place> retPlaceList = response.body().getPlaces();
+
+                    for(Place element : retPlaceList)
+                    {
+                        int resourceId = CategoryToImageResource(element.getCategory());
+                        AddPlaceView(resourceId, element);
+                    }
+                }
+                else{
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<PlaceList> call, Throwable t) {
+                Log.d(LOG_TAG, "response error : " + t.getMessage());
+            }
+        });
+    }
+
+    private void LoadPlaceAddress(String paramAddress)
+    {
+        mPlaceService.getPlacesWithAddr(paramAddress).enqueue(new Callback<PlaceList>() {
             @Override
             public void onResponse(Call<PlaceList> call, Response<PlaceList> response) {
 
@@ -238,23 +307,34 @@ public class SearchActivity extends AppCompatActivity {
             case R.id.layout_category_bed:      selectedCategory = Category.BED;      break;
         }
 
+        SearchCategory(position, region, selectedCategory);
+    }
+
+
+
+
+    private void SearchCategory(int position, String region, String selectedCategory)
+    {
         // 카테고리만 선택 됐을 때
         if(selectedCategory != null && position == MENU_PLACE_REGION && region.equals(""))
         {
             PrintToast(selectedCategory + "를 기준으로 검색 합니다");
-            LoadPlaceData(region, selectedCategory);
+            LoadPlaceData(MENU_PLACE_REGION, region, selectedCategory);
         }
         // 스피너에서 현재 선택한 것이 지역이면서 카테고리가 선택됐을 때
         else if(selectedCategory != null && position == MENU_PLACE_REGION)
         {
             PrintToast(region +"와(과) " + selectedCategory + "(을)를 기준으로 검색 합니다");
-            LoadPlaceData(region, selectedCategory);
+            LoadPlaceData(MENU_PLACE_REGION, region, selectedCategory);
         }
+        // 둘다 선택이 안됐을 때
         else
         {
-           PrintToast("지역과 카테고리를 선택해주세요");
+            PrintToast("지역과 카테고리를 선택해주세요");
         }
     }
+
+
 
     private void PrintToast(String message)
     {

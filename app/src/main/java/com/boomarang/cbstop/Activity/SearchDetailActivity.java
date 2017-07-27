@@ -52,8 +52,8 @@ public class SearchDetailActivity extends AppCompatActivity implements OnMapRead
 
         Marker marker = mGoogleMap.addMarker(
                 new MarkerOptions()
-                        .position(new LatLng(lat, lng))
-                        .title(mPlace.getName()));
+                .position(new LatLng(lat, lng))
+                .title(mPlace.getName()));
         marker.showInfoWindow();
 
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lng), 15.0f));

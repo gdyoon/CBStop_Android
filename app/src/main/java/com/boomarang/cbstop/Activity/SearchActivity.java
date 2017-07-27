@@ -62,6 +62,8 @@ public class SearchActivity extends AppCompatActivity {
         String searchedValue = intent.getStringExtra("searchValue");
 
         et_search_search.setText(searchedValue);
+
+
     }
 
     private void AddItemListToSpinner()
@@ -282,11 +284,11 @@ public class SearchActivity extends AppCompatActivity {
 
 
     @OnClick({R.id.layout_category_historic,
-            R.id.layout_category_camping,
-            R.id.layout_category_tree,
-            R.id.layout_category_event,
-            R.id.layout_category_food,
-            R.id.layout_category_bed
+              R.id.layout_category_camping,
+              R.id.layout_category_tree,
+              R.id.layout_category_event,
+              R.id.layout_category_food,
+              R.id.layout_category_bed
     })
     public void OnCategoryButtonClicked(View paramView)
     {

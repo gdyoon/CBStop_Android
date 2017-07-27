@@ -20,7 +20,6 @@
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -31,7 +30,7 @@
         <activity android:name=".Activity.SearchActivity" />
         <activity android:name=".Activity.SettingActivity" />
         <activity android:name=".Activity.EventActivity" />
-        <activity android:name=".Activity.SearchDetailActivity"></activity>
+        <activity android:name=".Activity.SearchDetailActivity" />
     </application>
 
 </manifest>

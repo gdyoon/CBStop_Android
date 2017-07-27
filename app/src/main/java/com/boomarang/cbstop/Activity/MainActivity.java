@@ -23,15 +23,10 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 
-    @BindView(R.id.tb_main_bar)
-    Toolbar tb_main_bar;
-    @BindView(R.id.layout_main_drawer)
-    DrawerLayout layout_main_drawer;
-    @BindView(R.id.vw_main_navigation)
-    NavigationView vw_main_navigation;
-    @BindView(R.id.et_main_search)
-    EditText et_main_search;
-
+    @BindView(R.id.tb_main_bar)         Toolbar tb_main_bar;
+    @BindView(R.id.layout_main_drawer)  DrawerLayout layout_main_drawer;
+    @BindView(R.id.vw_main_navigation)  NavigationView vw_main_navigation;
+    @BindView(R.id.et_main_search)      EditText et_main_search;
     private GoogleMap mGoogleMap;
 
     @Override
@@ -100,5 +95,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
-
 }

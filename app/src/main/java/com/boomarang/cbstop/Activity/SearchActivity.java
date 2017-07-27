@@ -55,12 +55,15 @@ public class SearchActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mPlaceService = ApiUtils.getPlaceService();
-
         AddItemListToSpinner();
         SetOnMenuItemClickListener();
 
+        Intent intent = getIntent();
+        String searchedValue = intent.getStringExtra("searchValue");
 
-        et_search_search.setText("");
+        et_search_search.setText(searchedValue);
+
+
     }
 
     private void AddItemListToSpinner()
@@ -96,7 +99,19 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    private void LoadPlaceData(String paramRegion)
+    private void LoadPlaceData(String... params)
+    {
+        if(params.length == 1)
+        {
+            LoadPlace(params[0]);
+        }
+        else if(params.length == 2)
+        {
+            LoadPlace(params[0], params[1]);
+        }
+    }
+
+    private void LoadPlace(String paramRegion)
     {
         mPlaceService.getPlaces(paramRegion).enqueue(new Callback<PlaceList>() {
             @Override
@@ -125,6 +140,37 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void LoadPlace(String paramRegion, String paramCategory)
+    {
+        mPlaceService.getPlaces(paramRegion, paramCategory).enqueue(new Callback<PlaceList>() {
+            @Override
+            public void onResponse(Call<PlaceList> call, Response<PlaceList> response) {
+
+                if(response.isSuccessful()) {
+                    layout_search_list.removeAllViews();
+
+                    List<Place> retPlaceList = response.body().getPlaces();
+
+                    for(Place element : retPlaceList)
+                    {
+                        int resourceId = CategoryToImageResource(element.getCategory());
+                        AddPlaceView(resourceId, element);
+                    }
+                }
+                else{
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<PlaceList> call, Throwable t) {
+                Log.d(LOG_TAG, "response error : " + t.getMessage());
+            }
+        });
+    }
+
 
     private int CategoryToImageResource(String paramCategory)
     {
@@ -165,5 +211,54 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         layout_search_list.addView(placeView);
+    }
+
+
+    @OnClick({R.id.layout_category_historic,
+              R.id.layout_category_camping,
+              R.id.layout_category_tree,
+              R.id.layout_category_event,
+              R.id.layout_category_food,
+              R.id.layout_category_bed
+    })
+    public void OnCategoryButtonClicked(View paramView)
+    {
+        int position = sp_search_category.getSelectedItemPosition();
+        String region = et_search_search.getText().toString();
+        String selectedCategory = null;
+
+
+        switch(paramView.getId())
+        {
+            case R.id.layout_category_historic: selectedCategory = Category.HISTORIC; break;
+            case R.id.layout_category_camping:  selectedCategory = Category.CAMPING;  break;
+            case R.id.layout_category_tree:     selectedCategory = Category.TREE;     break;
+            case R.id.layout_category_event:    selectedCategory = Category.EVENT;    break;
+            case R.id.layout_category_food:     selectedCategory = Category.FOOD;     break;
+            case R.id.layout_category_bed:      selectedCategory = Category.BED;      break;
+        }
+
+        // 카테고리만 선택 됐을 때
+        if(selectedCategory != null && position == MENU_PLACE_REGION && region.equals(""))
+        {
+            PrintToast(selectedCategory + "를 기준으로 검색 합니다");
+            LoadPlaceData(region, selectedCategory);
+        }
+        // 스피너에서 현재 선택한 것이 지역이면서 카테고리가 선택됐을 때
+        else if(selectedCategory != null && position == MENU_PLACE_REGION)
+        {
+            PrintToast(region +"와(과) " + selectedCategory + "(을)를 기준으로 검색 합니다");
+            LoadPlaceData(region, selectedCategory);
+        }
+        else
+        {
+           PrintToast("지역과 카테고리를 선택해주세요");
+        }
+    }
+
+    private void PrintToast(String message)
+    {
+        Toast.makeText(getApplicationContext(),
+                message, Toast.LENGTH_SHORT).show();
     }
 }

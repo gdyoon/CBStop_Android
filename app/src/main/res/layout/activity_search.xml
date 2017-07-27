@@ -79,6 +79,7 @@
         android:gravity="center">
 
         <LinearLayout
+            android:id="@+id/layout_category_historic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -99,6 +100,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layout_category_camping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -120,6 +122,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layout_category_tree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -141,6 +144,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layout_category_event"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -163,6 +167,7 @@
 
 
         <LinearLayout
+            android:id="@+id/layout_category_food"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -184,6 +189,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layout_category_bed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"

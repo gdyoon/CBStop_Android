@@ -15,4 +15,7 @@ public interface PlaceService {
 
     @GET("place.php?")
     Call<PlaceList> getPlaces(@Query("region")String region);
+
+    @GET("place.php?")
+    Call<PlaceList> getPlaces(@Query("region")String region, @Query("category") String category);
 }
